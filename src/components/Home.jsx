@@ -1,4 +1,5 @@
 import TaskCards from "./TaskCards";
+import Dates from "./Dates";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
         </div>
         <button className="btn btn-success text-white">&#43; Add Task</button>
       </div>
+      <Dates />
       <TaskCards />
     </div>
   );
