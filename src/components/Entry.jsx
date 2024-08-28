@@ -28,8 +28,8 @@ function Entry() {
   return (
     <div>
       {/* Button to open the modal */}
-      <button className="btn btn-accent" onClick={openModal}>
-        Add Entry
+      <button className="btn btn-success text-white" onClick={openModal}>
+        &#43; Add Entry
       </button>
 
       {/* Modal Structure */}
