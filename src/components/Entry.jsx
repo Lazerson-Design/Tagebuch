@@ -28,7 +28,7 @@ function Entry() {
   return (
     <div>
       {/* Button to open the modal */}
-      <button className="btn btn-accent" onClick={openModal}>
+      <button className="btn btn-success" onClick={openModal}>
         Add Entry
       </button>
 
@@ -65,7 +65,7 @@ function Entry() {
           <div className="modal-action">
             <form method="dialog" onSubmit={handleSubmit}>
               {/* Button to submit the entry */}
-              <button type="submit" className="btn btn-accent">
+              <button type="submit" className="btn btn-success">
                 Submit
               </button>
             </form>

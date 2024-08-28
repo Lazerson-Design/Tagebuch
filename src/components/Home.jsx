@@ -1,4 +1,5 @@
 import TaskCards from "./TaskCards";
+import Entry from "./Entry";
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
           <p className="text-gray-600">27 August</p>
           <h1 className="text-3xl font-bold">Heute</h1>
         </div>
-        <button className="btn btn-success text-white">&#43; Add Task</button>
+        <Entry />
       </div>
       <TaskCards />
     </div>

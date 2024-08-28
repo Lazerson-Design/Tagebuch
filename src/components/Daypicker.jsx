@@ -8,11 +8,11 @@ const Daypicker = ({ selectedDate, setSelectedDate }) => {
       <style>
         {`
           .rdp-root {
-            --rdp-accent-color: #00b29f; /* Custom accent color */
+            --rdp-accent-color: #00a96e; /* Custom accent color */
             --rdp-accent-background-color: #e5f9f7; /* Optional: lighter background for selected days */
-            --rdp-today-color: #00b29f; /* Color for today's date */
-            --rdp-selected-border: 20px solid #00b29f; /* Border color for selected days */
-            --rdp-today-color: #000;
+            --rdp-today-color: #00a96e; /* Color for today's date */
+            --rdp-selected-border: 2px solid #00a96e; /* Border color for selected days */
+            --rdp-today-color: #00a96e;
           }
         `}
       </style>
