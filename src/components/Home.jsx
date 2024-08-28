@@ -1,6 +1,6 @@
 import EntryCards from "./EntryCards";
 import TodayDate from "./TodayDate";
-import Dates from "./Dates";
+import WeekDates from "./WeekDates";
 import Entry from "./Entry";
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
         <TodayDate />
         <Entry />
       </div>
-      <Dates />
+      <WeekDates />
       <EntryCards />
     </div>
   );
