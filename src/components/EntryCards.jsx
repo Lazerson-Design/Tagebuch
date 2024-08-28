@@ -1,6 +1,6 @@
 import tasksData from "../data/tasks";
 
-const TaskCards = () => {
+const EntryCards = () => {
   return (
     <div className="flex flex-col gap-8">
       {tasksData &&
@@ -21,4 +21,4 @@ const TaskCards = () => {
   );
 };
 
-export default TaskCards;
+export default EntryCards;
