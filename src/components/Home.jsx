@@ -1,4 +1,4 @@
-import TaskCards from "./TaskCards";
+import EntryCards from "./EntryCards";
 import TodayDate from "./TodayDate";
 import Dates from "./Dates";
 import Entry from "./Entry";
@@ -11,7 +11,7 @@ const Home = () => {
         <Entry />
       </div>
       <Dates />
-      <TaskCards />
+      <EntryCards />
     </div>
   );
 };
