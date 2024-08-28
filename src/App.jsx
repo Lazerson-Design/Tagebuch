@@ -1,5 +1,3 @@
-import Entry from "./components/Entry";
-import { useState } from "react";
 import Home from "./components/Home";
 
 
