@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Daypicker from "./Daypicker";
+import ImagePicker from "./ImagePicker";
+import Error from "./Error";
 
 function Entry() {
   // Textarea benutzt State um Eintrag zu speichern
@@ -8,9 +10,20 @@ function Entry() {
   // Datumeingabe
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  // Funktion die URL vom Imagepicker trägt
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+
+  // Funktion für Errorstate
+  const [error, setError] = useState("");
+
   // Funktion öffnet Modal wenn "Add Entry" ist geklickt
   const openModal = () => {
     document.getElementById("my_modal_1").showModal();
+  };
+
+  // Function to open the DayPicker modal
+  const openDaypicker = () => {
+    document.getElementById("daypicker_modal").showModal();
   };
 
   // Function liest Textarea und updated State
@@ -18,18 +31,48 @@ function Entry() {
     setDiaryEntry(event.target.value); // Momentaner Wert der textarea
   };
 
+  // Function to validate fields
+  const validateFields = () => {
+    if (!diaryEntry) {
+      return "Title or Entry text is required.";
+    }
+    if (!selectedDate) {
+      return "Date selection is required.";
+    }
+    if (!selectedImageUrl) {
+      return "Image selection is required.";
+    }
+    return null; // No errors
+  };
+
   // Function fürs Abschicken
   const handleSubmit = (event) => {
-    event.preventDefault(); // Verhindert den Default
-    console.log("Diary Entry Submitted:", diaryEntry); // Logt die Textarea zum Zeitpunkt der Submission
-    document.getElementById("my_modal_1").close(); // Modal schließen nach der Submission
+    event.preventDefault();
+
+    // Validate before submission
+    const errorMessage = validateFields();
+    if (errorMessage) {
+      setError(errorMessage);
+      document.getElementById("error_modal").showModal(); // Open the error modal
+      return;
+    }
+
+    console.log("Diary Entry Submitted:", diaryEntry);
+    console.log("Selected Date:", selectedDate);
+    console.log("Selected Image URL:", selectedImageUrl);
+    document.getElementById("my_modal_1").close(); // Close the entry modal
+  };
+
+  const closeModal = () => {
+    setError("");
+    document.getElementById("error_modal").close();
   };
 
   return (
     <div>
       {/* Button to open the modal */}
-      <button className="btn btn-success" onClick={openModal}>
-        Add Entry
+      <button className="btn btn-success text-white" onClick={openModal}>
+        &#43; Add Entry
       </button>
 
       {/* Modal Structure */}
@@ -56,16 +99,45 @@ function Entry() {
             onChange={handleChange} // Handle changes to the textarea
           ></textarea>
 
-          {/* Datum */}
-          <Daypicker
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-          />
+          {/* Datum + Display */}
+          <div className="flex items-center justify-between mt-4">
+            {/* DayPicker Button */}
+            <Daypicker
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
+
+            {/* Displaying Date */}
+            <p className="border border-neutral rounded-lg p-3 w-40 text-right">
+              {selectedDate
+                ? selectedDate.toLocaleDateString()
+                : "No date selected"}
+            </p>
+          </div>
+
+          {/* Image Upload + Preview */}
+          <div className="flex items-center justify-between mt-4">
+            <ImagePicker onImageSelect={setSelectedImageUrl} />
+
+            <div className="border border-neutral rounded-lg ">
+              <div className="w-full h-full rounded-lg w-40 h-12 overflow-hidden">
+                {selectedImageUrl ? (
+                  <img
+                    src={selectedImageUrl}
+                    alt="Selected"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span>No image selected</span>
+                )}
+              </div>
+            </div>
+          </div>
 
           <div className="modal-action">
             <form method="dialog" onSubmit={handleSubmit}>
               {/* Button to submit the entry */}
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="btn btn-success text-white">
                 Submit
               </button>
             </form>
@@ -77,6 +149,9 @@ function Entry() {
           <button>close</button>
         </form>
       </dialog>
+
+      {/* Error Modal */}
+      <Error message={error} onClose={closeModal} />
     </div>
   );
 }
