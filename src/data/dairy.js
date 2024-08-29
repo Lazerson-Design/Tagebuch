@@ -1,4 +1,4 @@
-const tasksData = [
+const dairy = [
   {
     "id": 1,
     "title": "Projektplanung abschließen",
@@ -43,4 +43,4 @@ const tasksData = [
   }
 ]
 
-export default tasksData;
+export default dairy;

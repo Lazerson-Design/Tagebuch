@@ -1,17 +1,25 @@
 import EntryCards from "./EntryCards";
 import TodayDate from "./TodayDate";
-import Dates from "./Dates";
+import WeekDates from "./WeekDates";
 import Entry from "./Entry";
+import { useState } from "react";
 
 const Home = () => {
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+
   return (
     <div className="w-96 m-auto">
       <div className="flex justify-between py-10">
         <TodayDate />
         <Entry />
       </div>
-      <Dates />
-      <EntryCards />
+      <WeekDates
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+      <EntryCards selectedDate={selectedDate} />
     </div>
   );
 };
