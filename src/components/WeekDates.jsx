@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-const WeekDates = () => {
-  const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
-
+const WeekDates = ({ selectedDate, setSelectedDate }) => {
   const getCurrentWeek = () => {
     const week = [];
     const current = new Date();

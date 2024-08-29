@@ -1,10 +1,18 @@
-import tasksData from "../data/tasks";
+import { useEffect, useState } from "react";
+import { getEntriesByDate } from "../utils/localStorage";
 
-const EntryCards = () => {
+const EntryCards = ({ selectedDate }) => {
+  const [entries, setEntries] = useState(null);
+
+  useEffect(() => {
+    const data = getEntriesByDate(selectedDate);
+    setEntries(data);
+  }, selectedDate);
+
   return (
     <div className="flex flex-col gap-8">
-      {tasksData &&
-        tasksData.map((entry) => {
+      {entries &&
+        entries.map((entry) => {
           return (
             <div key={entry.id} className="card bg-entry-blue w-96 shadow-xl">
               <figure className="px-10 pt-10">
