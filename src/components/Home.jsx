@@ -8,19 +8,22 @@ const Home = () => {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
+  const [addEntry, setAddEntry] = useState(false);
 
   return (
-    <div className="w-96 m-auto">
-      <div className="flex justify-between py-10">
+    <>
+      <div className="w-96 m-auto flex justify-between py-10">
         <TodayDate />
-        <Entry />
+        <Entry setAddEntry={setAddEntry} />
       </div>
       <WeekDates
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        addEntry={addEntry}
+        setAddEntry={setAddEntry}
       />
-      <EntryCards selectedDate={selectedDate} />
-    </div>
+      <EntryCards selectedDate={selectedDate} addEntry={addEntry} />
+    </>
   );
 };
 
