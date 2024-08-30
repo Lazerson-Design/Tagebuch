@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Daypicker from "./Daypicker";
-import ImagePicker from "./ImagePicker";
+import ImagePicker from "./Imagepicker";
 import Error from "./Error";
 
 function Entry({ setAddEntry }) {
