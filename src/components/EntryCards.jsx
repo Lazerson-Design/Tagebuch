@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
 import { getEntriesByDate } from "../utils/localStorage";
 
-const EntryCards = ({ selectedDate }) => {
+const EntryCards = ({ selectedDate, addEntry }) => {
   const [entries, setEntries] = useState(null);
   // console.log(entries);
 
   useEffect(() => {
     const data = getEntriesByDate(selectedDate);
     setEntries(data);
-  }, [selectedDate]);
+  }, [selectedDate, addEntry]);
 
   return (
     <div className="w-96 m-auto flex flex-col gap-8">
       {entries &&
         entries.map((entry) => {
           return (
-            <div key={entry.title} className="card bg-entry-blue w-96 shadow-xl">
+            <div
+              key={entry.title}
+              className="card bg-entry-blue w-96 shadow-xl"
+            >
               <figure className="px-10 pt-10">
                 <img src={entry.image} alt="Task" className="rounded-xl" />
               </figure>

@@ -3,7 +3,7 @@ import Daypicker from "./Daypicker";
 import ImagePicker from "./ImagePicker";
 import Error from "./Error";
 
-function Entry() {
+function Entry({ setAddEntry }) {
   // State um Titel zu speichern
   const [title, setTitle] = useState("");
 
@@ -84,6 +84,7 @@ function Entry() {
     );
 
     clearState(); // Clear all fields
+    setAddEntry(true);
 
     document.getElementById("my_modal_1").close(); // Close the entry modal
   };
