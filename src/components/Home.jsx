@@ -10,8 +10,8 @@ const Home = () => {
   );
 
   return (
-    <div className="w-96 m-auto">
-      <div className="flex justify-between py-10">
+    <>
+      <div className="w-96 m-auto flex justify-between py-10">
         <TodayDate />
         <Entry />
       </div>
@@ -20,7 +20,7 @@ const Home = () => {
         setSelectedDate={setSelectedDate}
       />
       <EntryCards selectedDate={selectedDate} />
-    </div>
+    </>
   );
 };
 
