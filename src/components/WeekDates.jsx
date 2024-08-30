@@ -42,8 +42,8 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
   };
 
   return (
-    <ul className="w-[34rem] m-auto flex justify-between mb-8">
-      <button className="btn btn-md btn-circle" onClick={prevWeekHandle}>
+    <ul className="w-[32rem] m-auto flex justify-between items-center mb-8">
+      <button className="btn btn-sm btn-circle" onClick={prevWeekHandle}>
         ❮
       </button>
       {getCurrentWeek().map((week) => {
@@ -62,7 +62,7 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
           </li>
         );
       })}
-      <button className="btn btn-md btn-circle" onClick={nextWeekHandle}>
+      <button className="btn btn-sm btn-circle" onClick={nextWeekHandle}>
         ❯
       </button>
     </ul>
