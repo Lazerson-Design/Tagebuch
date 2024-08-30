@@ -83,12 +83,25 @@ function Entry() {
       JSON.parse(localStorage.getItem("diaryEntries"))
     );
 
+    clearState(); // Clear all fields
+
     document.getElementById("my_modal_1").close(); // Close the entry modal
   };
 
+  const clearState = () => {
+    setTitle(""); // Clear the title state
+    setDiaryEntry(""); // Clear the diary entry state
+    setSelectedDate(new Date()); // Reset the date state to today's date
+    setSelectedImageUrl(null); // Clear the selected image URL state
+    setError(""); // Clear the error state
+  };
+
   const closeModal = () => {
+    // Reset the error state
     setError("");
-    document.getElementById("error_modal").close();
+
+    // Close the modal
+    document.getElementById("my_modal_1").close();
   };
 
   return (
