@@ -1,21 +1,32 @@
 import React from "react";
 
-const DisplayE = ({ entry, onClick }) => {
+const DisplayE = ({ entry, setOpenModul }) => {
   return (
-    <div
-      className="bg-white shadow-md rounded-lg p-4 cursor-pointer"
-      onClick={onClick}
-    >
-      <img
-        src={entry.image}
-        alt={entry.title}
-        className="w-full h-40 object-cover rounded-t-lg"
-      />
-      <h2 className="text-xl font-bold mt-2">{entry.title}</h2>
-      <p className="text-gray-500">
-        {new Date(entry.date).toLocaleDateString()}
-      </p>
-    </div>
+    <>
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <button className="btn">open modal</button>
+      <dialog id="my_modal_1" className="modal modal-open">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">
+            Press ESC key or click the button below to close
+          </p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button
+                className="btn"
+                onClick={() => {
+                  setOpenModul(false);
+                }}
+              >
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </>
   );
 };
 
