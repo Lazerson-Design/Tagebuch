@@ -18,13 +18,6 @@ const DisplayE = ({ entry, setOpenModul }) => {
           </form>
 
           <div className="card card-compact w-96">
-            <figure className="h-40 w-auto px-10">
-              <img
-                className="w-full h-full object-cover rounded-xl"
-                src={entry.image}
-                alt={entry.title}
-              />
-            </figure>
             <div className="card-body">
               <h2 className="card-title">{entry.title}</h2>
               <p className="py-4">
@@ -38,6 +31,9 @@ const DisplayE = ({ entry, setOpenModul }) => {
               </p>
               <p>{entry.content}</p>
             </div>
+            <figure className="px-10">
+              <img className="rounded-xl" src={entry.image} alt={entry.title} />
+            </figure>
           </div>
         </div>
       </dialog>
