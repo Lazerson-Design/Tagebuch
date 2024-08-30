@@ -157,8 +157,8 @@ function Entry() {
           <div className="flex items-center justify-between mt-4">
             <ImagePicker onImageSelect={setSelectedImageUrl} />
 
-            <div className="border border-neutral rounded-lg ">
-              <div className="w-full h-full rounded-lg w-40 h-12 overflow-hidden">
+            <div className="border border-neutral w-40 h-12 rounded-lg ">
+              <div className="w-full h-full rounded-lg  overflow-hidden">
                 {selectedImageUrl ? (
                   <img
                     src={selectedImageUrl}
