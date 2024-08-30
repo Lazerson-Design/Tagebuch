@@ -4,6 +4,9 @@ import ImagePicker from "./ImagePicker";
 import Error from "./Error";
 
 function Entry() {
+  // State um Titel zu speichern
+  const [title, setTitle] = useState("");
+
   // Textarea benutzt State um Eintrag zu speichern
   const [diaryEntry, setDiaryEntry] = useState("");
 
@@ -33,8 +36,11 @@ function Entry() {
 
   // Function to validate fields
   const validateFields = () => {
+    if (!title) {
+      return "Title is required.";
+    }
     if (!diaryEntry) {
-      return "Title or Entry text is required.";
+      return "Entry text is required.";
     }
     if (!selectedDate) {
       return "Date selection is required.";
@@ -57,15 +63,45 @@ function Entry() {
       return;
     }
 
-    console.log("Diary Entry Submitted:", diaryEntry);
-    console.log("Selected Date:", selectedDate);
-    console.log("Selected Image URL:", selectedImageUrl);
+    // Create an entry object with the specified structure
+    const entry = {
+      title, // Key for the title
+      date: selectedDate.toISOString().split("T")[0], // Format date as "YYYY-MM-DD"
+      image: selectedImageUrl, // Key for the image URL
+      content: diaryEntry, // Key for the diary entry content
+    };
+
+    // Save the entry to local storage
+    const existingEntries =
+      JSON.parse(localStorage.getItem("diaryEntries")) || [];
+    existingEntries.push(entry);
+    localStorage.setItem("diaryEntries", JSON.stringify(existingEntries));
+
+    // Log all entries in local storage after adding the new one
+    console.log(
+      "All Entries in Local Storage:",
+      JSON.parse(localStorage.getItem("diaryEntries"))
+    );
+
+    clearState(); // Clear all fields
+
     document.getElementById("my_modal_1").close(); // Close the entry modal
   };
 
+  const clearState = () => {
+    setTitle(""); // Clear the title state
+    setDiaryEntry(""); // Clear the diary entry state
+    setSelectedDate(new Date()); // Reset the date state to today's date
+    setSelectedImageUrl(null); // Clear the selected image URL state
+    setError(""); // Clear the error state
+  };
+
   const closeModal = () => {
+    // Reset the error state
     setError("");
-    document.getElementById("error_modal").close();
+
+    // Close the modal
+    document.getElementById("my_modal_1").close();
   };
 
   return (
@@ -90,6 +126,8 @@ function Entry() {
             type="text"
             placeholder="What A Day"
             className="input input-bordered w-full mb-4"
+            value={title} // Bind the value to the title state
+            onChange={(e) => setTitle(e.target.value)} // Update the title state on change
           />
           {/* Textarea Input */}
           <textarea
