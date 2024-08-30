@@ -69,7 +69,7 @@ function ImagePicker({ onImageSelect }) {
           </div>
 
           {/* Image Picker Content */}
-          <div className="carousel w-full rounded-xl">
+          <div className="carousel rounded-xl">
             {Array.from({ length: 7 }).map((_, slideIndex) => (
               <div
                 id={`slide${slideIndex + 1}`}

@@ -66,7 +66,7 @@ function Entry({ setAddEntry }) {
     // Create an entry object with the specified structure
     const entry = {
       title, // Key for the title
-      date: selectedDate.toISOString().split("T")[0], // Format date as "YYYY-MM-DD"
+      date: selectedDate.toLocaleDateString("en-CA"), // Format date as "YYYY-MM-DD" in the local timezone
       image: selectedImageUrl, // Key for the image URL
       content: diaryEntry, // Key for the diary entry content
     };

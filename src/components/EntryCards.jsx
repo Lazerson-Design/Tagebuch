@@ -3,7 +3,7 @@ import { getEntriesByDate } from "../utils/localStorage";
 
 const EntryCards = ({ selectedDate, addEntry }) => {
   const [entries, setEntries] = useState(null);
-  // console.log(entries);
+  console.log(entries);
 
   useEffect(() => {
     const data = getEntriesByDate(selectedDate);
