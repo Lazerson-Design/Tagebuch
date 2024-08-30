@@ -3,11 +3,12 @@ import { getEntriesByDate } from "../utils/localStorage";
 
 const EntryCards = ({ selectedDate }) => {
   const [entries, setEntries] = useState(null);
+  console.log(entries);
 
   useEffect(() => {
     const data = getEntriesByDate(selectedDate);
     setEntries(data);
-  }, selectedDate);
+  }, [selectedDate]);
 
   return (
     <div className="flex flex-col gap-8">
