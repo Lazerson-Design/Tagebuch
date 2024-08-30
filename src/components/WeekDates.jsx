@@ -29,7 +29,6 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
     setStartDate((prev) => {
       const date = new Date(prev);
       date.setDate(date.getDate() - 7);
-      setSelectedDate(null);
       return date;
     });
   };
@@ -38,14 +37,13 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
     setStartDate((prev) => {
       const date = new Date(prev);
       date.setDate(date.getDate() + 7);
-      setSelectedDate(null);
       return date;
     });
   };
 
   return (
     <ul className="w-[34rem] m-auto flex justify-between mb-8">
-      <button className="btn btn-circle" onClick={prevWeekHandle}>
+      <button className="btn btn-md btn-circle" onClick={prevWeekHandle}>
         ❮
       </button>
       {getCurrentWeek().map((week) => {
@@ -64,7 +62,7 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
           </li>
         );
       })}
-      <button className="btn btn-circle" onClick={nextWeekHandle}>
+      <button className="btn btn-md btn-circle" onClick={nextWeekHandle}>
         ❯
       </button>
     </ul>
