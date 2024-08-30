@@ -29,6 +29,7 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
     setStartDate((prev) => {
       const date = new Date(prev);
       date.setDate(date.getDate() - 7);
+      setSelectedDate(null);
       return date;
     });
   };
@@ -37,6 +38,7 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
     setStartDate((prev) => {
       const date = new Date(prev);
       date.setDate(date.getDate() + 7);
+      setSelectedDate(null);
       return date;
     });
   };

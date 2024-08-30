@@ -18,8 +18,17 @@ const EntryCards = ({ selectedDate }) => {
               <figure className="px-10 pt-10">
                 <img src={entry.image} alt="Task" className="rounded-xl" />
               </figure>
-              <div className="card-body items-center text-center">
+              <div className="card-body">
                 <h2 className="card-title">{entry.title}</h2>
+                <p className="text-gray-600">
+                  <span className="font-bold">Date: </span>{" "}
+                  {new Date(entry.date).toLocaleString("de-DE", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
                 <p className="text-gray-600">{entry.content}</p>
               </div>
             </div>
