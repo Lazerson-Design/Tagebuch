@@ -7,10 +7,10 @@ const EntryCards = ({ selectedDate }) => {
   useEffect(() => {
     const data = getEntriesByDate(selectedDate);
     setEntries(data);
-  }, selectedDate);
+  }, [selectedDate]);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="w-96 m-auto flex flex-col gap-8">
       {entries &&
         entries.map((entry) => {
           return (

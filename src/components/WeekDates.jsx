@@ -1,28 +1,51 @@
 import { useState } from "react";
 
+const getStartDate = () => {
+  const current = new Date();
+  return new Date(current.setDate(current.getDate() - current.getDay() + 1));
+};
+
 const WeekDates = ({ selectedDate, setSelectedDate }) => {
+  const [startDate, setStartDate] = useState(getStartDate());
+
   const getCurrentWeek = () => {
     const week = [];
-    const current = new Date();
-    let day = new Date(
-      current.setDate(current.getDate() - current.getDay() + 1)
-    );
+    let startDay = new Date(startDate);
 
     for (let i = 0; i < 7; i++) {
       week.push({
-        weekday: day.toLocaleDateString("en-US", { weekday: "short" }),
-        date: day.toLocaleDateString("en-US", { day: "numeric" }),
-        dateISO: day.toISOString().split("T")[0],
+        weekday: startDay.toLocaleDateString("en-US", { weekday: "short" }),
+        date: startDay.toLocaleDateString("en-US", { day: "numeric" }),
+        dateISO: startDay.toISOString().split("T")[0],
       });
 
-      day.setDate(day.getDate() + 1);
+      startDay.setDate(startDay.getDate() + 1);
     }
 
     return week;
   };
 
+  const prevWeekHandle = () => {
+    setStartDate((prev) => {
+      const date = new Date(prev);
+      date.setDate(date.getDate() - 7);
+      return date;
+    });
+  };
+
+  const nextWeekHandle = () => {
+    setStartDate((prev) => {
+      const date = new Date(prev);
+      date.setDate(date.getDate() + 7);
+      return date;
+    });
+  };
+
   return (
-    <ul className="flex justify-between mb-8">
+    <ul className="w-[34rem] m-auto flex justify-between mb-8">
+      <button className="btn btn-circle" onClick={prevWeekHandle}>
+        ❮
+      </button>
       {getCurrentWeek().map((week) => {
         return (
           <li key={week.dateISO}>
@@ -39,6 +62,9 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
           </li>
         );
       })}
+      <button className="btn btn-circle" onClick={nextWeekHandle}>
+        ❯
+      </button>
     </ul>
   );
 };
