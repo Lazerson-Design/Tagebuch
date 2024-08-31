@@ -84,7 +84,7 @@ function Entry({ setAddEntry }) {
     );
 
     clearState(); // Clear all fields
-    setAddEntry(true);
+    setAddEntry((prev) => !prev); 
 
     document.getElementById("my_modal_1").close(); // Close the entry modal
   };
