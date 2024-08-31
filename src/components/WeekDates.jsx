@@ -14,9 +14,9 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
 
     for (let i = 0; i < 7; i++) {
       week.push({
-        weekday: startDay.toLocaleDateString("en-US", { weekday: "short" }),
-        date: startDay.toLocaleDateString("en-US", { day: "numeric" }),
-        dateISO: startDay.toISOString().split("T")[0],
+        weekday: startDay.toLocaleDateString("en-CA", { weekday: "short" }),
+        date: startDay.toLocaleDateString("en-CA", { day: "numeric" }),
+        localDate: startDay.toLocaleDateString("en-CA"),
       });
 
       startDay.setDate(startDay.getDate() + 1);
@@ -48,11 +48,11 @@ const WeekDates = ({ selectedDate, setSelectedDate }) => {
       </button>
       {getCurrentWeek().map((week) => {
         return (
-          <li key={week.dateISO}>
+          <li key={week.localDate}>
             <a
-              onClick={() => setSelectedDate(week.dateISO)}
+              onClick={() => setSelectedDate(week.localDate)}
               className={`flex flex-col items-center gap-2 border-b-2 border-transparent hover:cursor-pointer no-underline ${
-                selectedDate === week.dateISO &&
+                selectedDate === week.localDate &&
                 "border-accent-green text-accent-green"
               }`}
             >
