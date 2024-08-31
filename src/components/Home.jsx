@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0]
+    new Date().toLocaleDateString("en-CA")
   );
   const [addEntry, setAddEntry] = useState(false);
 
