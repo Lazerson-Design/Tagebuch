@@ -18,22 +18,26 @@ const DisplayE = ({ entry, setOpenModul }) => {
           </form>
 
           <div className="card card-compact w-96">
-            <div className="card-body">
-              <h2 className="card-title">{entry.title}</h2>
-              <p className="py-4">
-                <span className="font-bold">Date: </span>
-                {new Date(entry.date).toLocaleString("de-DE", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}{" "}
-              </p>
-              <p>{entry.content}</p>
+            <div className="flex items-center gap-6">
+              <div className="avatar">
+                <div className="mask mask-squircle h-32 w-32">
+                  <img src={entry.image} alt="" />
+                </div>
+              </div>
+              <div>
+                <div className="card-title">{entry.title}</div>
+                <div className="text-gray-600">
+                  <span className="font-bold">Date: </span>
+                  {new Date(entry.date).toLocaleString("de-DE", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                </div>
+              </div>
             </div>
-            <figure className="px-10">
-              <img className="rounded-xl" src={entry.image} alt={entry.title} />
-            </figure>
+            <p className="py-8 text-gray-600">{entry.content}</p>
           </div>
         </div>
       </dialog>
